@@ -1,7 +1,7 @@
 # Prezzo par ----
 
 rm(list=ls());gc();
-load("dati_puliti.Rdata")
+load("../Dati/dati_puliti.Rdata")
 
 library(MASS)
 library(tidyverse)
@@ -522,7 +522,7 @@ cat(sprintf("%-25s %10.4f %10.4f %10.4f\n", "RMSE (€)",
 # Prezzo non par ----
 
 rm(list=ls());gc();
-load("dati_puliti.Rdata")
+load("../Dati/dati_puliti.Rdata")
 
 source("utils.R")
 
@@ -1085,7 +1085,7 @@ cbind(t(r2_prezzo), t(rmse_prezzo), t(mae_prezzo))
 # Favoriti par ----
 
 rm(list=ls());gc();
-load("dati_puliti.Rdata")
+load("../Dati/dati_puliti.Rdata")
 
 library(MASS)
 library(tidyverse)
@@ -1332,7 +1332,7 @@ cat("popolarità del brand spiega i preferiti oltre al prezzo.\n")
 # Favoriti non par ----
 
 rm(list=ls());gc();
-load("dati_puliti.Rdata")
+load("../Dati/dati_puliti.Rdata")
 
 source("utils.R")
 
@@ -1882,7 +1882,7 @@ cbind(t(r2_fav), t(rmse_fav), t(mae_fav))
 # Classificazione ----
 
 rm(list=ls()); gc();
-load("dati_puliti.RData")
+load("../Dati/dati_puliti.Rdata")
 
 #Classificazione sulla qualità: Probit Ordinale
 
@@ -2937,7 +2937,7 @@ ggplot(errori_dettaglio, aes(x = Reale, y = Predetto, size = n, color = n)) +
 # MBA ----
 
 rm(list=ls()); gc();
-load("dati_puliti.RData")
+load("../Dati/dati_puliti.Rdata")
 
 ## Definizione liste brand scarpe e abbigliamento ----
 brand_dal_dataset <- unique(na.omit(tolower(trimws(dataset_MBA$Brand_raw))))
@@ -3362,7 +3362,7 @@ edge_density(rete30) # 97%
 head(sort(betweenness(rete30), decreasing = TRUE), 5)
 
 
-url <- "https://raw.githubusercontent.com/lucavarotto/vinted-scraper-and-business-analysis/main/Dati/google_trends_global_p2.csv"
+url <- "https://raw.githubusercontent.com/lucavarotto/Vinted_scraper_and_business_analysis/main/Dati/google_trends_global_p2.csv"
 dati_google <- read.csv(url)
 View(dati_google)
 

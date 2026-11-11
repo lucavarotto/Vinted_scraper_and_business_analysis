@@ -1,1 +1,7 @@
 .Rhistory
+.RData
+__pycache__/
+
+# I modelli stimati: pesanti e rigenerabili da 1_analisi.R
+Analisi/Modelli_stimati/*
+!Analisi/Modelli_stimati/.gitkeep

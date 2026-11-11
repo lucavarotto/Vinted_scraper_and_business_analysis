@@ -1,6 +1,6 @@
 rm(list=ls());gc();
 
-url <- "https://raw.githubusercontent.com/lucavarotto/vinted-scraper-and-business-analysis/main/Dati/dati.csv"
+url <- "https://raw.githubusercontent.com/lucavarotto/Vinted_scraper_and_business_analysis/main/Dati/dati.csv"
 dati <- readr::read_csv(url)
 cat("\ndimensioni:", dim(dati))
 dati[is.na(dati$Condition),]
@@ -329,7 +329,7 @@ dati <- dati %>%
 
 # dati google trends ----
 
-url <- "https://raw.githubusercontent.com/lucavarotto/vinted-scraper-and-business-analysis/main/Dati/google_trends_global.csv"
+url <- "https://raw.githubusercontent.com/lucavarotto/Vinted_scraper_and_business_analysis/main/Dati/google_trends_global.csv"
 brand <- readr::read_csv(url)
 colnames(brand)
 m <- mean(brand$avg_interest_global_last_year)
@@ -386,6 +386,6 @@ table(fold_id)
 
 save(dati, dataset_regressione_prezzo, dataset_regressione_favoriti,
      dataset_classificazione_qualita, dataset_MBA, dataset_clustering,
-     id_stima, id_verifica, fold_id, file="dati_puliti.Rdata")
+     id_stima, id_verifica, fold_id, file="../Dati/dati_puliti.Rdata")
 
 colMeans(is.na(dati))

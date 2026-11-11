@@ -7,7 +7,9 @@ import os
 from random import random
 
 
-os.chdir("Progetto")
+# La working directory e' la radice del progetto, ricavata dalla posizione
+# di questo file: cosi' i percorsi relativi valgono da qualsiasi cartella.
+os.chdir(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 # Configurazione del sistema di logging per stampare messaggi puliti in console
 # Mostrerà il tipo di messaggio (INFO, WARNING, ERROR) seguito dal testo
@@ -65,8 +67,8 @@ def fetch_trends_global_batch(
 
 def main(
     #input_csv: str = "Analisi/dati_puliti_colab.csv",
-    input_csv: str = "Scraping/brand_per_laura.csv",
-    output_csv: str = "Scraping/google_trends_per_laura.csv",
+    input_csv: str = "Dati/brand_pt2.csv",
+    output_csv: str = "Dati/google_trends_global_p2.csv",
     delay_between_batches: float = 3.0,
 ):
     # Legge il file CSV dei brand precedentemente pulito in R

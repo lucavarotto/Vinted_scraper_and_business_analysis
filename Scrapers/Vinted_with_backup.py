@@ -14,10 +14,9 @@ from selenium.common.exceptions import (
 )
 from datetime import datetime
 
-try:
-    os.chdir("Progetto/Scraping")
-except FileNotFoundError:
-    print("Cartella Progetto/Scraping non trovata, uso la cartella corrente.")
+# La working directory e' la radice del progetto, ricavata dalla posizione
+# di questo file: cosi' i percorsi relativi valgono da qualsiasi cartella.
+os.chdir(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 # ──────────────────────────────────────────────
 # CONFIGURAZIONE
@@ -653,7 +652,7 @@ def main():
             # ── SALVATAGGIO INTERMEDIO ogni 100 prodotti ──────────
             if len(dataset) % 50 == 0 and len(dataset) > 0:
                 timestamp = datetime.now().strftime("%Y%m%d_%H-%M")
-                checkpoint_file = f"vinted_{query.replace(' ', '_')}_checkpoint_{timestamp}.csv"
+                checkpoint_file = f"Dati/vinted_{query.replace(' ', '_')}_checkpoint_{timestamp}.csv"
                 df_checkpoint = pd.DataFrame(dataset)
                 df_checkpoint.to_csv(checkpoint_file, index=False, encoding="utf-8-sig")
                 print(f"\n  [CHECKPOINT] {len(dataset)} prodotti salvati → {checkpoint_file}\n")
@@ -677,7 +676,7 @@ def main():
                 df[col] = pd.to_numeric(df[col], errors="coerce")
 
         timestamp = datetime.now().strftime("%Y%m%d_%H-%M")
-        nome_file = f"vinted_{query.replace(' ', '_')}_{timestamp}.csv"
+        nome_file = f"Dati/vinted_{query.replace(' ', '_')}_{timestamp}.csv"
 
         df.to_csv(nome_file, index=False, encoding="utf-8-sig")
         print(f"\nSalvato: {nome_file}  ({len(df)} righe, {len(df.columns)} colonne)")
